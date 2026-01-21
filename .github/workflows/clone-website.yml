@@ -75,6 +75,17 @@ jobs:
                     'Accept-Language': 'en-US,en;q=0.9',
                     'Referer': url
                   }
+                },
+                resourceSaver: {
+                  saveResource: (resource) => {
+                    const blocked = [
+                      '.mp4','google-analytics',
+                      'googletagmanager',
+                      'facebook',
+                      'hotjar'
+                    ];
+                    return !blocked.some(b => resource.url.includes(b));
+                  }
                 }
               });
 
